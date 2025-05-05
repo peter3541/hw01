@@ -1,0 +1,51 @@
+[
+  {
+    "date": "2025-05-05",
+    "amount": 2,
+    "category": "餐飲",
+    "note": "",
+    "type": "支出"
+  },
+  {
+    "date": "2025-05-05",
+    "amount": 1,
+    "category": "娛樂",
+    "note": "",
+    "type": "收入"
+  },
+  {
+    "date": "2025-05-05",
+    "amount": 1,
+    "category": "餐飲",
+    "note": "",
+    "type": "支出"
+  },
+  {
+    "date": "2025-05-05",
+    "amount": 1,
+    "category": "餐飲",
+    "note": "",
+    "type": "支出"
+  },
+  {
+    "date": "2025-05-05",
+    "amount": 1,
+    "category": "餐飲",
+    "note": "",
+    "type": "支出"
+  },
+  {
+    "date": "2025-05-05",
+    "amount": 1,
+    "category": "餐飲",
+    "note": "",
+    "type": "支出"
+  },
+  {
+    "date": "2025-05-05",
+    "amount": 5,
+    "category": "交通",
+    "note": "",
+    "type": "支出"
+  }
+]
