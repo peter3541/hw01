@@ -3,6 +3,17 @@
 
 import streamlit as st
 import time
+from utils import load_data, save_data, add_record, calculate_total
+
+def delete_record(index):
+    data = load_data()
+    
+    removed = data.pop(index)
+    save_data(data)
+    st.success(f"已刪除：{removed['date']} {removed['category']} {removed['amount']} 元")
+    time.sleep(1)
+
+        
 
 st.set_page_config(page_title="簡易記帳小幫手", layout="centered")
 
@@ -18,6 +29,8 @@ if "form_saved" not in st.session_state:
 #     st.session_state.saved_time = 0
 
 # 側邊欄按鈕
+if st.sidebar.button("首頁"):
+    st.session_state.page = "home"
 if st.sidebar.button("新增紀錄"):
     st.session_state.page = "add"
 if st.sidebar.button("查看紀錄"):
@@ -40,6 +53,7 @@ if st.session_state.page == "add":
         submitted = st.form_submit_button("儲存紀錄")
         if submitted:
             st.session_state.form_saved = True
+            add_record(amount, category, note, is_income)
             
 
     if st.session_state.form_saved:
@@ -51,8 +65,31 @@ if st.session_state.page == "add":
 
 elif st.session_state.page == "achieve":
     st.title("__查看紀錄__")
+    st.header("所有記帳紀錄")
+    data = load_data()
+    if not data:
+        st.info("目前沒有任何記錄。")
+    else:
+        for i, item in enumerate(data):
+            col1, col2 = st.columns([5, 1])
+            with col1:
+                st.write(f" [{item['date']}] {item['type']} | {item['category']} | {item['amount']} 元 - {item['note']}")
+            with col2:
+                if st.button("🗑️ 刪除", key=f"del_{i}"):
+                    delete_record(i)
+                    st.rerun()
+                  
+# elif st.session_state.page == "achieve":
+#     st.title("__查看紀錄__")
+#     st.header("所有記帳紀錄")
+#     data = load_data()
+#     st.dataframe(data)
+    
 
-print("11111")
+
+
+
+
 # elif st.session_state.page == "achieve":
 #     st.title("__成就系統__")
 

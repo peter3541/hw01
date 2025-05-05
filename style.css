@@ -18,13 +18,13 @@ section[data-testid="stSidebar"] {
 /* 按鈕樣式調整 */
 .stButton > button {
     /* font-size: 20px;*/
-    color: rgb(182, 182, 155); 
+    color: rgb(107, 107, 88); 
     /* background-color: rgb(156, 178, 216);
     padding: 10px;
     width: 100%;
     height: 60px;
     border-radius: 50px;  */ 
-    border: 2px solid rgba(203, 186, 186, 0.902);
+    border: 2px solid rgb(107, 107, 88);
 } 
 .stButton > button:active {
     /* font-size: 20px;  */
@@ -38,9 +38,9 @@ section[data-testid="stSidebar"] {
 }
 
 .stButton > button:hover {
-    color: #ffff00; 
-    /* background-color: rgb(136, 158, 200);  */
-    border: 2px solid #ffff00;
+    color: #51bb46; 
+    /* background-color: rgb(219, 213, 182);  */
+    border: 2px solid #51bb46;
 } 
 
 
@@ -50,7 +50,7 @@ section[data-testid="stSidebar"] {
     /* border: 2px solid rgba(34, 194, 55, 0.902); */
     /* outline: none !important;   */
     /*  background-color: rgb(136, 158, 200) !important;  */
-    color: rgb(182, 182, 155) !important;  
+    color: rgb(107, 107, 88) !important;  
     /* border: none !important;  */
-    border: 2px solid rgba(203, 186, 186, 0.902) !important;
+    border: 2px solid rgb(107, 107, 88) !important;
 }
