@@ -1,6 +1,6 @@
 
 import streamlit as st
-from utils import load_data, save_data, add_record, calculate_total
+from back import load_data, save_data, add_record, calculate_total
 
 st.set_page_config(page_title="簡易記帳小幫手", layout="centered")
 
