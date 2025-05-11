@@ -17,8 +17,8 @@ def delete_record(index):
 
 st.set_page_config(page_title="簡易記帳小幫手", layout="centered")
 
-# with open("style.css", encoding="utf-8") as f:
-#     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+with open("style.css", encoding="utf-8") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # 初始化狀態
 if "page" not in st.session_state:
