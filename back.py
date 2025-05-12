@@ -4,6 +4,7 @@ import os
 
 
 DATA_FILE = 'data.json'
+BUDGET_DATA_FILE = 'budget_data.json'
 
 
 
@@ -14,13 +15,14 @@ def load_data():
     else:
         return []
     
-def add_record(amount, category, note):
+def add_record(amount, category, note , month):
     data = load_data()
     record = {
         "date": datetime.now().strftime("%Y-%m-%d"),
         "amount": amount,
         "category": category,
         "note": note,
+        "month": month,
         # "type": "收入" if is_income else "支出"
     }
     data.append(record)
@@ -66,7 +68,72 @@ def calculate_category_totals(data):
             totals[item["category"]] += item["amount"]
     
     return totals
+########################3
+def balance():
+    total = 0
+    # budget_data= budget_load_data()
+    month = datetime.now().month
+    budget_data = budget_load_data()
+    data= load_data()
+    for item in budget_data:
+        if item["budget_month"] == month:
+            total += item["budget_amount"]
+    for item in data:
+        if item["month"] == month:
+            total -= item["amount"]
+    return total
+
+
+
+
+
+
+
+
+
+
+
+def add_budget(budget_amount, budget_month):
+    data = budget_load_data()
+    record = {
+        "budget_month":int(budget_month),
+        "budget_amount": budget_amount,
+        # "type": "收入" if is_income else "支出"
+    }
+    data.append(record)
+    budget_save_data(data)
+
+def budget_load_data():
+    if os.path.exists(BUDGET_DATA_FILE):
+        with open(BUDGET_DATA_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    else:
+        return []
     
+def budget_save_data(data):
+    with open(BUDGET_DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+#####################
+
+
+
+# def add_record(amount, category, note , month):
+#     data = load_data()
+
+
+
+#     grouped_data = {}
+#     for item in data:
+#         date = item["date"]
+#         if date not in grouped_data:
+#             grouped_data[date] = []
+#         grouped_data[date].append(item)
+
+
+
+
 # def calculate_total(data):
 #     total = 0
 #     for item in data:

@@ -1,20 +1,9 @@
 [
   {
-    "date": "2025-05-08",
-    "amount": 80,
-    "category": "其他",
-    "note": ""
-  },
-  {
-    "date": "2025-05-08",
-    "amount": 799,
-    "category": "午餐",
-    "note": ""
-  },
-  {
     "date": "2025-05-12",
-    "amount": 1,
-    "category": "午餐",
-    "note": ""
+    "amount": 100,
+    "category": "早餐",
+    "note": "",
+    "month": 5
   }
 ]
