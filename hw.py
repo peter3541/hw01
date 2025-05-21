@@ -3,7 +3,7 @@
 
 import streamlit as st
 import time
-from back import load_data, save_data, add_record, calculate_total,calculate_category_totals,add_budget,balance,budget_load_data,budget_save_data
+from back import load_data, save_data, add_record, calculate_total,calculate_category_totals,add_budget,balance,budget_load_data,budget_save_data,honor,honor02,honor03
 from datetime import datetime
 
 def delete_record(index):
@@ -50,6 +50,8 @@ if st.sidebar.button("本月預算"):
     st.session_state.page = "budget"
 if st.sidebar.button("本月結算"):
     st.session_state.page = "balance"
+if st.sidebar.button("成就系統"):
+    st.session_state.page = "honor"
 
 # 顯示頁面內容
 
@@ -169,15 +171,21 @@ elif st.session_state.page == "count":
     totals = calculate_category_totals(data)
 
     # 顯示結果
+
+
+
     for category, total in totals.items():
         st.write(f"{category}：${total}")
+
+
+
     
 elif st.session_state.page == "budget":
     st.title("新增預算")
     
     with st.form("entry_form"):
-        budget_amount = st.number_input("金額", min_value=1, step=1)
         budget_month = st.selectbox("月份", ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],index=datetime.now().month - 1)
+        budget_amount = st.number_input("金額", min_value=1, step=1)
         # is_income = st.radio("收入 / 支出", ["支出", "收入"]) == "收入"
         
         submitted = st.form_submit_button("儲存紀錄")
@@ -213,6 +221,57 @@ elif st.session_state.page == "balance":
     balance=balance()
     st.metric("本月結算", f"${balance}")
     
+    
+
+elif st.session_state.page == "honor":
+    # st.title("成就系統")    
+    st.markdown("<h1 class='honor'>>>>成就紀錄<<<</h1>", unsafe_allow_html=True)
+    qwe,total=honor()  
+    st.markdown("<h1 class='honor01'>成就➊</h1>", unsafe_allow_html=True)
+
+    col5, col6 = st.columns([6, 2])
+    with col5: 
+            st.markdown("<h1 class='honor02'>花費低於1萬元</h1>", unsafe_allow_html=True)
+    with col6:
+        if qwe=="01ok":
+            # st.markdown("<h1 style='font-size: 25px;color:green;'>達成</h1>", unsafe_allow_html=True)
+            st.markdown("<h1 class='honor03'>達成</h1>", unsafe_allow_html=True)
+            st.write(f"~本月總花費為{total}元") 
+        else:
+            st.markdown("<h1 class='honor04'>未達成</h1>", unsafe_allow_html=True)
+            st.write(f"~本月總花費為{total}元") 
+    qwe=honor02() 
+    # st.write("成就二")
+    st.markdown("<h1 class='honor01'>成就➋</h1>", unsafe_allow_html=True)
+    col7, col8 = st.columns([6, 2])
+    with col7:
+        # st.write("花費低於結算")
+        st.markdown("<h1 class='honor02'>花費低於預算</h1>", unsafe_allow_html=True)
+
+    with col8:
+        balance=balance()
+        if qwe=="02ok":
+            st.markdown("<h1 class='honor03'>達成</h1>", unsafe_allow_html=True)
+            st.write(f"~餘額為{balance}元") 
+        else:
+            st.markdown("<h1 class='honor04'>未達成</h1>", unsafe_allow_html=True)
+            st.write(f"~餘額為{balance}元")
+    qwe,total=honor03() 
+    # st.write("成就三")
+    st.markdown("<h1 class='honor01'>成就➌</h1>", unsafe_allow_html=True)
+    col7, col8 = st.columns([6, 2])
+    with col7:
+        # st.write("本月花費低於上月")
+        st.markdown("<h1  class='honor02'>本月花費低於上月</h1>", unsafe_allow_html=True)
+    with col8:
+        if qwe=="03ok":
+            st.markdown("<h1 class='honor03'>達成</h1>", unsafe_allow_html=True)
+            st.write(f"~較上月少了{total}元") 
+        else:
+            st.markdown("<h1 class='honor04'>未達成</h1>", unsafe_allow_html=True)
+            st.write(f"~比上月多花了{total}元")
+
+
 
     # balance_data = [item for item in data if item["category"] == selected_category]
     #     else:
@@ -364,3 +423,4 @@ elif st.session_state.page == "balance":
 
 
 
+# ➍➎➏➐➑➒➓

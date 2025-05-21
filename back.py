@@ -42,15 +42,7 @@ def calculate_total(data):
     return total
 
 def calculate_category_totals(data):
-    """
-    計算各分類的總金額。
-
-    Args:
-        data (list): 包含記帳資料的清單，每個元素是一個字典，包含 'category' 和 'amount' 等欄位。
-
-    Returns:
-        dict: 各分類的總金額。
-    """
+    month = datetime.now().month
     totals = {
         "早餐": 0,
         "午餐": 0,
@@ -62,11 +54,14 @@ def calculate_category_totals(data):
         "遊戲": 0,
         "其他": 0,
     }
-    
+    # 全部的資料
+    # for item in data:
+    #     if item["category"] in totals:
+    #         totals[item["category"]] += item["amount"]
+    # 只計算當月的資料
     for item in data:
-        if item["category"] in totals:
+        if item["category"] in totals and item["month"] == month:
             totals[item["category"]] += item["amount"]
-    
     return totals
 ########################3
 def balance():
@@ -82,15 +77,6 @@ def balance():
         if item["month"] == month:
             total -= item["amount"]
     return total
-
-
-
-
-
-
-
-
-
 
 
 def add_budget(budget_amount, budget_month):
@@ -116,6 +102,93 @@ def budget_save_data(data):
 
 
 #####################
+
+
+
+
+def honor():
+    total = 0
+    month = datetime.now().month
+    budget_data = budget_load_data()
+    data= load_data()
+    for item in data:
+        if item["month"] == month:
+            total += item["amount"]
+    if total < 10000:
+        return "01ok",total
+    else :
+        return 0,total
+def honor02():
+    qwe=balance()
+    if qwe > 0:
+        return "02ok"   
+    else:
+        return 0
+def honor03():
+    total = 0
+    # budget_data= budget_load_data()
+    month = datetime.now().month
+    budget_data = budget_load_data()
+    data= load_data()
+    for item in budget_data:
+        if item["budget_month"] == month-1:
+            total += item["budget_amount"]
+    for item in data:
+        if item["month"] == month-1:
+            total -= item["amount"]
+    
+    total01 = 0
+    for item in budget_data:
+        if item["budget_month"] == month:
+            total01 += item["budget_amount"]
+    for item in data:
+        if item["month"] == month:
+            total01 -= item["amount"]
+    total=total01-total
+    if total > 0:
+        return "03ok",total
+    else:
+        return 0, total*-1
+
+    
+    
+    return total
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    qwe=balance()
+    if qwe > 0:
+        return "02ok"   
+    else:
+        return 0
+    
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

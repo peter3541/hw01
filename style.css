@@ -54,3 +54,26 @@ section[data-testid="stSidebar"] {
     /* border: none !important;  */
     border: 2px solid rgb(107, 107, 88) !important;
 }
+
+
+.honor {
+    text-align:center;
+}
+
+.honor01 {
+    font-size: 25px !important;
+}
+
+.honor02 {
+    font-size: 25px !important;
+    font-weight:normal !important;
+}
+
+.honor03 {
+    font-size: 25px !important;
+    color:green !important;
+}
+.honor04 {
+    font-size: 25px !important;
+    color:red !important;
+}

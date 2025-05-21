@@ -1,9 +1,23 @@
 [
   {
-    "date": "2025-05-12",
+    "date": "2025-05-22",
     "amount": 100,
     "category": "早餐",
     "note": "",
     "month": 5
+  },
+  {
+    "date": "2025-05-22",
+    "amount": 200,
+    "category": "早餐",
+    "note": "",
+    "month": 5
+  },
+  {
+    "date": "2025-04-22",
+    "amount": 150,
+    "category": "晚餐",
+    "note": "",
+    "month": 4
   }
 ]
