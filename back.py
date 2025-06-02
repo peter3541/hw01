@@ -23,7 +23,6 @@ def add_record(amount, category, note , month):
         "category": category,
         "note": note,
         "month": month,
-        # "type": "收入" if is_income else "支出"
     }
     data.append(record)
     save_data(data)
@@ -54,19 +53,12 @@ def calculate_category_totals(data):
         "遊戲": 0,
         "其他": 0,
     }
-    # 全部的資料
-    # for item in data:
-    #     if item["category"] in totals:
-    #         totals[item["category"]] += item["amount"]
-    # 只計算當月的資料
     for item in data:
         if item["category"] in totals and item["month"] == month:
             totals[item["category"]] += item["amount"]
     return totals
-########################3
 def balance():
     total = 0
-    # budget_data= budget_load_data()
     month = datetime.now().month
     budget_data = budget_load_data()
     data= load_data()
@@ -84,7 +76,6 @@ def add_budget(budget_amount, budget_month):
     record = {
         "budget_month":int(budget_month),
         "budget_amount": budget_amount,
-        # "type": "收入" if is_income else "支出"
     }
     data.append(record)
     budget_save_data(data)
@@ -101,7 +92,6 @@ def budget_save_data(data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-#####################
 
 
 
@@ -126,7 +116,6 @@ def honor02():
         return 0
 def honor03():
     total = 0
-    # budget_data= budget_load_data()
     month = datetime.now().month
     budget_data = budget_load_data()
     data= load_data()
