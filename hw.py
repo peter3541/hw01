@@ -174,7 +174,7 @@ elif st.session_state.page == "balance":
 elif st.session_state.page == "honor":   
     st.markdown("<h1 class='honor'>>>>成就紀錄<<<</h1>", unsafe_allow_html=True)
     qwe,total=honor()  
-    st.markdown("<h1 class='honor01'>成就➊</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='honor01'>成就➊-乞丐超人</h1>", unsafe_allow_html=True)
 
     col5, col6 = st.columns([6, 2])
     with col5: 
@@ -187,7 +187,7 @@ elif st.session_state.page == "honor":
             st.markdown("<h1 class='honor04'>未達成</h1>", unsafe_allow_html=True)
             st.write(f"~本月總花費為{total}元") 
     qwe=honor02() 
-    st.markdown("<h1 class='honor01'>成就➋</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='honor01'>成就➋-父母的好孩子</h1>", unsafe_allow_html=True)
     col7, col8 = st.columns([6, 2])
     with col7:
         st.markdown("<h1 class='honor02'>花費低於預算</h1>", unsafe_allow_html=True)
@@ -201,7 +201,7 @@ elif st.session_state.page == "honor":
             st.write(f"~餘額為{balance}元")
             
     qwe,total=honor03() 
-    st.markdown("<h1 class='honor01'>成就➌</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='honor01'>成就➌-存款增加快樂減少</h1>", unsafe_allow_html=True)
     col7, col8 = st.columns([6, 2])
     with col7:
         st.markdown("<h1  class='honor02'>本月花費低於上月</h1>", unsafe_allow_html=True)
