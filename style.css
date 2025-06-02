@@ -18,6 +18,7 @@ section[data-testid="stSidebar"] {
 .stButton > button {
     color: rgb(107, 107, 88); 
     border: 2px solid rgb(107, 107, 88);
+    background-color: white !important;
 } 
 .stButton > button:active {
     background-color: rgb(156, 178, 216); 
